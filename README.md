@@ -28,3 +28,9 @@ Open http://localhost:3000 in your browser to view the site.
     Blog/articles section (optional)
 
     Resume and social media links
+
+# Deployment & CI/CD
+
+This project is deployed automatically using GitHub Actions for Continuous Integration and Continuous Deployment (CI/CD). Whenever changes are merged into the main branch, the workflow runs automated checks like linting and testing to ensure code quality.
+
+After passing these checks, the updated site is automatically deployed to Vercel, providing a seamless and fast deployment process. This setup ensures that the live site is always up-to-date with the latest stable code without manual intervention.
