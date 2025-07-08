@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import ThemeToggleSwitch from './ThemeToggle';
 
 export default function MobileSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
