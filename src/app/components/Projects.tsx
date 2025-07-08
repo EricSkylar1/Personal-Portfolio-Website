@@ -41,7 +41,7 @@ const projects = [
     title: "Bot Blackjack",
     description: "A simple web page where bots play blackjack against each other, showcasing AI strategies and game mechanics.",
     tech: ["HTML", "CSS", "JavaScript"],
-    link: "#",
+    link: "https://github.com/EricSkylar1/Bot-Blackjack",
     image: "bot-blackjack.png",
   },
   {

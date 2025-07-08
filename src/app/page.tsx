@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Introduction from "./components/Introduction";
 import Projects from "./components/Projects";
+import Github from "./components/Github";
+import Skills from "./components/Skills";
 
 export default function Home() {
   const [greeting, setGreeting] = useState("Hi");
@@ -25,6 +27,8 @@ export default function Home() {
 	<div className="flex min-h-screen flex-col items-center py-15 px-4 bg-gradient-to-b from-black to-gray-900 text-white">
 	  <Introduction />
 	  <Projects />
+	  <Github />
+	  <Skills />
 	</div>
   );
 }

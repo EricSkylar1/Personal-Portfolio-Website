@@ -16,7 +16,7 @@ export default function Navbar() {
 		  <ul className="hidden md:flex gap-8 text-lg">
 			{[
 			  { href: "#projects", label: "Projects" },
-			  { href: "#github", label: "Github", target: "_blank", rel: "noopener noreferrer" },
+			  { href: "#github", label: "Github" },
 			  { href: "#skills", label: "Skills/Tech/Frameworks" },
 			  { href: "#linkedin", label: "LinkedIn", target: "_blank", rel: "noopener noreferrer" },
 			  { href: "#contact", label: "Contact" },
