@@ -18,14 +18,11 @@ export default function Navbar() {
 			  { href: "#projects", label: "Projects" },
 			  { href: "#github", label: "Github" },
 			  { href: "#skills", label: "Skills/Tech/Frameworks" },
-			  { href: "#linkedin", label: "LinkedIn", target: "_blank", rel: "noopener noreferrer" },
 			  { href: "#contact", label: "Contact" },
 			].map((item, idx) => (
 			  <li key={item.label}>
 				<a
 				  href={item.href}
-				  {...(item.target ? { target: item.target } : {})}
-				  {...(item.rel ? { rel: item.rel } : {})}
 				  className="relative transition-colors duration-500 hover:text-red-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-red-400 after:transition-all after:duration-500 hover:after:w-full"
 				>
 				  {item.label}

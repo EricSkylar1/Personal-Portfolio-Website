@@ -89,7 +89,7 @@ export default function Projects() {
               {/* Front Side */}
               <a
                 href={project.link}
-                className="absolute inset-0 flex flex-col gap-4 dark:bg-zinc-900/80 rounded-2xl shadow-xl p-6 border border-zinc-200 dark:border-zinc-800 w-full h-full items-start justify-start card-front z-10"
+                className="absolute inset-0 flex flex-col gap-4 bg-gradient-to-br from-[#0f172a]/90 via-[#1e293b]/90 to-[#0ea5e9]/80 dark:from-[#1e293b]/90 dark:via-[#0f172a]/90 dark:to-[#0ea5e9]/60 rounded-2xl shadow-2xl p-6 border-2 border-cyan-400/40 dark:border-cyan-500/30 w-full h-full items-start justify-start card-front z-10 backdrop-blur-md hover:border-cyan-400 hover:shadow-cyan-500/30 transition-all duration-300"
               >
                 <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
                 <p className="text-zinc-700 dark:text-zinc-300 mb-2">{project.description}</p>
@@ -116,7 +116,7 @@ export default function Projects() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 flex items-center justify-center w-full h-full rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 card-back"
+                className="absolute inset-0 flex items-center justify-center w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-[#0ea5e9]/20 via-[#1e293b]/80 to-[#0f172a]/90 dark:from-[#0ea5e9]/10 dark:via-[#0f172a]/80 dark:to-black card-back border-2 border-cyan-400/30 dark:border-cyan-500/20 backdrop-blur-md"
                 tabIndex={-1}
                 aria-label={project.title + ' preview'}
               >

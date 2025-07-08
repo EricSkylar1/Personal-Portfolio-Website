@@ -5,6 +5,7 @@ import Introduction from "./components/Introduction";
 import Projects from "./components/Projects";
 import Github from "./components/Github";
 import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
 export default function Home() {
   const [greeting, setGreeting] = useState("Hi");
@@ -29,6 +30,7 @@ export default function Home() {
 	  <Projects />
 	  <Github />
 	  <Skills />
+	  <Contact />
 	</div>
   );
 }

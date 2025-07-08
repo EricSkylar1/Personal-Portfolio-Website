@@ -1,5 +1,6 @@
 import './styles/globals.css';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 export default function RootLayout({
 	children,
@@ -8,9 +9,10 @@ export default function RootLayout({
 }>) {
 	return (
 	   <html lang='en'>
-		   <body className='bg-black text-white'>
+		   <body className='bg-gray-900 text-white'>
 				<Navbar />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);

@@ -59,20 +59,33 @@ export default function Skills() {
   return (
     <section id="skills" className="w-full max-w-5xl mx-auto py-20 px-4">
       <h2 className="text-4xl font-extrabold mb-10 text-center">Skills</h2>
-      <div className="flex flex-col gap-10">
-        {skills.map((row, i) => (
-          <div key={categories[i]}>
-            <h3 className="text-2xl font-bold mb-4 text-center md:text-left">{categories[i]}</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {row.map(skill => (
-                <div key={skill.name} className="flex flex-col items-center p-4 bg-white dark:bg-zinc-900 rounded-xl shadow border border-zinc-200 dark:border-zinc-800">
-                  <div className="text-4xl mb-2">{skill.icon}</div>
-                  <span className="font-semibold text-lg text-center">{skill.name}</span>
-                </div>
-              ))}
+      <div className="flex flex-col md:flex-row gap-8 justify-center items-start">
+        {skills.map((row, i) => {
+          // Assign a unique gradient or color for each block
+          const blockGradients = [
+            'from-sky-800 via-sky-900 to-zinc-900 dark:from-sky-900 dark:via-sky-950 dark:to-black', // Frontend (techy/dark)
+            'from-green-800 via-green-900 to-zinc-900 dark:from-green-900 dark:via-green-950 dark:to-black', // Backend (techy/dark)
+            'from-purple-800 via-purple-900 to-zinc-900 dark:from-purple-900 dark:via-purple-950 dark:to-black', // Databases (techy/dark)
+            'from-yellow-700 via-yellow-900 to-zinc-900 dark:from-yellow-900 dark:via-yellow-950 dark:to-black', // DevOps & Cloud (techy/dark)
+            'from-pink-800 via-pink-900 to-zinc-900 dark:from-pink-900 dark:via-pink-950 dark:to-black', // Data Science (techy/dark)
+          ];
+          return (
+            <div
+              key={categories[i]}
+              className={`flex flex-col items-center justify-center rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6 w-full md:w-1/5 aspect-square min-w-[200px] max-w-[260px] mx-auto bg-gradient-to-br ${blockGradients[i]} transition-transform hover:scale-105 hover:shadow-2xl`}
+            >
+              <h3 className="text-xl font-bold mb-4 text-center drop-shadow-lg dark:text-white/90">{categories[i]}</h3>
+              <div className="flex flex-row flex-wrap gap-4 justify-center items-center">
+                {row.map(skill => (
+                  <div key={skill.name} className="flex flex-col items-center min-w-[60px]">
+                    <div className="text-3xl mb-1">{skill.icon}</div>
+                    <span className="font-medium text-base text-center whitespace-nowrap">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
