@@ -38,7 +38,6 @@ const skills = [
     { name: 'Docker', icon: <FaDocker className="text-blue-400" /> },
     { name: 'AWS', icon: <FaAws className="text-yellow-500" /> },
     { name: 'Linux', icon: <FaLinux className="text-black dark:text-white" /> },
-    { name: 'Vercel', icon: <SiVercel className="text-black dark:text-white" /> },
     { name: 'Git', icon: <FaGitAlt className="text-orange-600" /> },
   ],
   // Data Science
