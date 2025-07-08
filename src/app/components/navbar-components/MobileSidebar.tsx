@@ -18,9 +18,6 @@ export default function MobileSidebar({ open, onClose }: { open: boolean; onClos
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Me</a></li>
             <li><a href="/contact">Contact Me</a></li>
-			<div className='mt-4'>
-				<ThemeToggleSwitch />
-			</div>
           </ul>
         </nav>
 		
