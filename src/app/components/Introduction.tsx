@@ -21,8 +21,13 @@ export default function Introduction() {
     <div className="w-full max-w-5xl h-215 mx-auto px-8 flex flex-col items-center justify-center text-center font-inter">
 		{/* Avatar */}
 		<div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-br from-red-500 to-emerald-400 dark:from-red-700 dark:to-emerald-700 flex items-center justify-center overflow-hidden border-4 border-white dark:border-zinc-800 shadow-lg">
-			<span className="text-white/80 text-lg">🧑‍💻</span>
+			<img
+				src="/Eric-Pro.jpg"
+				alt="Profile"
+				className="w-full h-full object-cover"
+			/>
 		</div>
+
 
 		{/* Greeting */}
 		<h1 className="text-4xl font-extrabold leading-tight mb-2 drop-shadow-sm">

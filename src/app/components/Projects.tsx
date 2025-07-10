@@ -59,13 +59,6 @@ const projects = [
     image: "work-in-progress.png",
   },
   {
-    title: "Judo Training Tracker",
-    description: "A mobile app to log, analyze, and visualize judo training sessions, with progress charts and goal tracking.",
-    tech: ["React", "Expo", "Firebase"],
-    link: "#",
-    image: "work-in-progress.png",
-  },
-  {
     title: "FishDad",
     description: "A mobile app to log, analyze, and visualize fishing trips, with catch tracking and weather integration.",
     tech: ["React", "Tailwind", "NextJS", "Express", "Redis", "MongoDB", "Docker", "AWS"],
