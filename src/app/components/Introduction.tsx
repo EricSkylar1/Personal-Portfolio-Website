@@ -18,9 +18,9 @@ export default function Introduction() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl h-215 mx-auto px-8 flex flex-col items-center justify-center text-center font-inter">
+    <div className="w-full max-w-5xl h-215 mx-auto px-8 flex flex-col items-center justify-center text-center">
 		{/* Avatar */}
-		<div className="w-24 h-24 mb-6 rounded-full bg-gradient-to-br from-red-500 to-emerald-400 dark:from-red-700 dark:to-emerald-700 flex items-center justify-center overflow-hidden border-4 border-white dark:border-zinc-800 shadow-lg">
+		<div className="w-24 h-24 border-4 border-red-400 rounded-full overflow-hidden mb-6 shadow-[0_0_20px_rgba(220,38,38,0.7)]">
 			<img
 				src="/Eric-Pro.jpg"
 				alt="Profile"

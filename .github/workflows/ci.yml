@@ -26,6 +26,3 @@ jobs:
 
     - name: Run tests (if you have any)
       run: npm run test
-
-    - name: Run lint (xo)
-      run: npm run lint

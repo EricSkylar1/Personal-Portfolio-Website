@@ -104,7 +104,7 @@ export default function SkillsMatrix() {
   return (
     <section
       id="skills"
-      className="w-full max-w-6xl mx-auto px-6 py-24 text-white font-mono"
+      className="w-full max-w-6xl mx-auto px-6 py-24 text-white"
     >
       <h2 className="text-4xl font-bold mb-12 text-center tracking-wide border-b border-zinc-700 pb-2">
         Skills & Technologies

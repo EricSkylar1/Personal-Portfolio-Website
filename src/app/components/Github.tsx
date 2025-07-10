@@ -27,7 +27,7 @@ export default function GithubBash() {
   }, []);
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-24 font-mono">
+    <section id="github" className="w-full max-w-6xl mx-auto px-4 py-24 font-mono">
       <div className="bg-black text-white border border-zinc-700 rounded-md shadow-xl overflow-hidden text-sm leading-relaxed">
         {/* Terminal Top Header */}
         <div className="bg-zinc-900 px-4 py-2 border-b border-zinc-700 flex justify-between items-center text-xs">

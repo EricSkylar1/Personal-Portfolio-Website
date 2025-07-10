@@ -1,5 +1,6 @@
 import React from "react";
 import MasonryGallery from "./Masonrygallery"; // adjust the path if needed
+import { InfiniteMovingCards } from "./infinite-moving-cards";
 
 export default function AboutMe() {
   const images = [
@@ -12,7 +13,7 @@ export default function AboutMe() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 text-white font-sans">
+    <section id="about-me" className="max-w-6xl mx-auto px-6 py-30 grid grid-rows-1 md:grid-rows-2 gap-12 text-white">
       {/* Left Panel — Your Life Story */}
       <div className="space-y-6">
         <h2 className="text-3xl font-bold text-red-400">A little about me...</h2>
@@ -28,7 +29,12 @@ These days, I’m settled in Montana with my girlfriend and two cats who basical
 
       {/* Right Panel — Masonry Gallery */}
       <div className="flex justify-center items-start h-full w-full">
-        <MasonryGallery images={images} />
+        <InfiniteMovingCards
+		items={images}
+		direction="right"
+		speed="normal"
+		pauseOnHover={true}
+		/>
       </div>
     </section>
   );
