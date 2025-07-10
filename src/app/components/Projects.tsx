@@ -13,8 +13,8 @@ import {
 
 const techIconMap: Record<string, React.ReactElement> = {
   react: <FaReact title="React" className="text-3xl text-sky-500" />,
-  nextjs: <SiNextdotjs title="Next.js" className="text-3xl text-black dark:text-white" />,
-  "next.js": <SiNextdotjs title="Next.js" className="text-3xl text-black dark:text-white" />,
+  nextjs: <SiNextdotjs title="Next.js" className="text-3xl text-white dark:text-white" />,
+  "next.js": <SiNextdotjs title="Next.js" className="text-3xl text-white dark:text-white" />,
   "node.js": <FaNodeJs title="Node.js" className="text-3xl text-green-700" />,
   nodejs: <FaNodeJs title="Node.js" className="text-3xl text-green-700" />,
   python: <FaPython title="Python" className="text-3xl text-yellow-500" />,
@@ -59,13 +59,6 @@ const projects = [
     image: "work-in-progress.png",
   },
   {
-    title: "Judo Training Tracker",
-    description: "A mobile app to log, analyze, and visualize judo training sessions, with progress charts and goal tracking.",
-    tech: ["React", "Expo", "Firebase"],
-    link: "#",
-    image: "work-in-progress.png",
-  },
-  {
     title: "FishDad",
     description: "A mobile app to log, analyze, and visualize fishing trips, with catch tracking and weather integration.",
     tech: ["React", "Tailwind", "NextJS", "Express", "Redis", "MongoDB", "Docker", "AWS"],
@@ -76,23 +69,35 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="w-full py-35 px-4 flex flex-col font-inter">
-      <h2 className="text-4xl font-extrabold mb-10 drop-shadow ml-3">Projects</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+    <section id="projects" className="w-full py-35 px-4 flex flex-col">
+      <h2 className="text-4xl font-extrabold mb-10 drop-shadow text-center">Projects</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-y-6 gap-x-6 w-full max-w-[1280px] mx-auto">
         {projects.map((project, idx) => (
           <div
             key={project.title}
             tabIndex={0}
-            className="group perspective"
+            className="group perspective m-0 inline-flex w-fit"
           >
-            <div className="relative w-full h-80 min-w-[380px] max-w-[620px] mx-auto card-3d group">
+            <div className="flex h-80 w-[600px] card-3d group m-0">
               {/* Front Side */}
               <a
                 href={project.link}
-                className="absolute inset-0 flex flex-col gap-4 bg-gradient-to-br from-[#0f172a]/90 via-[#1e293b]/90 to-[#0ea5e9]/80 dark:from-[#1e293b]/90 dark:via-[#0f172a]/90 dark:to-[#0ea5e9]/60 rounded-2xl shadow-2xl p-6 border-2 border-cyan-400/40 dark:border-cyan-500/30 w-full h-full items-start justify-start card-front z-10 backdrop-blur-md hover:border-cyan-400 hover:shadow-cyan-500/30 transition-all duration-300"
+				className="
+					absolute inset-0 flex flex-col gap-4
+					rounded-2xl border-2 border-red-400
+					shadow-md shadow-cyan-700/40
+					p-6 w-full h-full
+					items-start justify-start
+					card-front z-10
+					backdrop-blur-md
+					hover:border-red-400 hover:shadow-cyan-400/60
+					transition-all duration-300
+					bg-black
+					overflow-hidden
+				"
               >
                 <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                <p className="text-zinc-700 dark:text-zinc-300 mb-2">{project.description}</p>
+                <p className="text-zinc-300 mb-2">{project.description}</p>
                 <div className="flex flex-wrap gap-4">
                   {project.tech.map(tech => {
                     const key = tech.toLowerCase();
@@ -116,7 +121,7 @@ export default function Projects() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 flex items-center justify-center w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-[#0ea5e9]/20 via-[#1e293b]/80 to-[#0f172a]/90 dark:from-[#0ea5e9]/10 dark:via-[#0f172a]/80 dark:to-black card-back border-2 border-cyan-400/30 dark:border-cyan-500/20 backdrop-blur-md"
+                className="absolute inset-0 flex items-center justify-center w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-[#0ea5e9]/20 via-[#1e293b]/80 to-[#0f172a]/90 dark:from-[#0ea5e9]/10 dark:via-[#0f172a]/80 dark:to-black card-back border-2 border-red-400/30 dark:border-cyan-500/20 backdrop-blur-md"
                 tabIndex={-1}
                 aria-label={project.title + ' preview'}
               >

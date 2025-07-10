@@ -1,3 +1,5 @@
+'use client';
+
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import React from 'react';
 
@@ -7,39 +9,90 @@ const EMAIL = 'mailto:ericskylar@gmail.com';
 
 export default function Contact() {
   return (
-    <section id="contact" className="w-full py-20 px-4 flex flex-col items-center">
-      <div className="max-w-2xl w-full bg-white/30 dark:bg-zinc-900/30 backdrop-blur-lg rounded-xl shadow-lg border border-cyan-400/10 dark:border-cyan-500/10 p-6 md:p-8 flex flex-col items-center gap-2 md:gap-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-center bg-gradient-to-r from-cyan-400 to-sky-500 bg-clip-text text-transparent drop-shadow">Get in touch with me!</h2>
-        <p className="text-lg md:text-xl text-center text-zinc-700 dark:text-zinc-300 mb-4">Feel free to connect or send me an email for opportunities, collaborations, or just to say hello.</p>
-        <div className="flex flex-row gap-10 mb-8 justify-center items-center">
-          <a
-            href={LINKEDIN_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-sky-500 dark:text-sky-400 hover:text-white hover:bg-sky-500/80 dark:hover:text-sky-200 rounded-full p-3 text-5xl transition-all duration-200 shadow-md hover:shadow-sky-400/40 focus:outline-none focus:ring-2 focus:ring-sky-400"
-            style={{ boxShadow: '0 0 16px 0 rgba(56,189,248,0.15)' }}
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href={GITHUB_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="text-zinc-800 dark:text-zinc-100 hover:text-white hover:bg-cyan-500/80 dark:hover:text-cyan-200 rounded-full p-3 text-5xl transition-all duration-200 shadow-md hover:shadow-cyan-400/40 focus:outline-none focus:ring-2 focus:ring-cyan-400"
-            style={{ boxShadow: '0 0 16px 0 rgba(6,182,212,0.15)' }}
-          >
-            <FaGithub />
-          </a>
-          {/* Email icon removed as requested */}
+    <section
+      id="contact"
+      className="w-full px-4 py-32 flex justify-center text-white"
+      aria-label="Contact section"
+    >
+      <div className="w-full max-w-3xl rounded-3xl p-10 bg-gradient-to-tr from-[#2a0a0a] via-[#1b0b0b] to-[#1c0c0c] shadow-[0_0_40px_rgba(200,50,50,0.6)]">
+        {/* Header */}
+        <h2 className="text-4xl font-extrabold mb-4 text-red-500 tracking-wide text-center drop-shadow-sm">
+          Contact Me
+        </h2>
+        <div className="text-zinc-400 text-lg mb-12 max-w-xl mx-auto text-center">
+          <p>
+            Interested in collaborating or just want to say hi?
+          </p>
+          <p>Drop a message below.</p>
         </div>
-        <a
-          href={EMAIL}
-          className="mt-2 px-8 py-3 bg-transparent border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 font-semibold rounded-lg shadow-none hover:bg-cyan-50/20 dark:hover:bg-cyan-900/20 hover:text-cyan-700 dark:hover:text-cyan-300 transition-all text-lg tracking-wide focus:outline-none focus:ring-2 focus:ring-cyan-400"
+
+        {/* Social Icons */}
+        <nav aria-label="Social media links" className="flex gap-8 mb-12 text-3xl justify-center">
+          {[{
+            href: LINKEDIN_PROFILE_URL,
+            label: 'LinkedIn profile',
+            icon: <FaLinkedin />
+          }, {
+            href: GITHUB_PROFILE_URL,
+            label: 'GitHub profile',
+            icon: <FaGithub />
+          }].map(({ href, label, icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-red-500 transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(220,38,38,0.6)]"
+              aria-label={label}
+            >
+              {icon}
+            </a>
+          ))}
+        </nav>
+
+        {/* Contact Form */}
+        <form
+          action="mailto:ericskylar@gmail.com"
+          method="POST"
+          encType="text/plain"
+          className="flex flex-col gap-6 max-w-xl mx-auto"
         >
-          Email Me
-        </a>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 px-5 py-4 rounded-xl
+              focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-shadow duration-300 shadow-sm shadow-red-900/30"
+            required
+            aria-label="Your Name"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 px-5 py-4 rounded-xl
+              focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-shadow duration-300 shadow-sm shadow-red-900/30"
+            required
+            aria-label="Your Email"
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows={5}
+            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 px-5 py-4 rounded-xl resize-none
+              focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-shadow duration-300 shadow-sm shadow-red-900/30"
+            required
+            aria-label="Your Message"
+          ></textarea>
+          <button
+            type="submit"
+            className="mt-6 bg-gradient-to-r from-[#330000] via-[#990000] to-[#330000] text-white font-semibold py-4 rounded-2xl shadow-md
+              hover:from-[#550000] hover:via-[#cc0000] hover:to-[#550000] transition duration-500 drop-shadow-[0_0_10px_rgba(220,38,38,0.5)]"
+            aria-label="Send Message"
+          >
+            Send Message
+          </button>
+        </form>
       </div>
     </section>
   );

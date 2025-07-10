@@ -1,91 +1,170 @@
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaPython, FaGitAlt, FaAws, FaLinux, FaDocker, FaJava, FaDatabase, FaTools, FaNetworkWired } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiExpress, SiRedux, SiJest, SiVercel, SiFigma, SiMysql, SiSpringboot, SiPandas, SiNumpy, SiHibernate } from 'react-icons/si';
-import React from 'react';
+import React from "react";
+import {
+  FaReact,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaPython,
+  FaGitAlt,
+  FaAws,
+  FaLinux,
+  FaDocker,
+  FaJava,
+  FaDatabase,
+  FaTools,
+  FaNetworkWired,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiMongodb,
+  SiPostgresql,
+  SiExpress,
+  SiRedux,
+  SiJest,
+  SiVercel,
+  SiFigma,
+  SiMysql,
+  SiSpringboot,
+  SiPandas,
+  SiNumpy,
+  SiHibernate,
+} from "react-icons/si";
 
+// Simple function to lighten hex colors by a percent (0-100)
+function lightenHex(hex: string, percent: number) {
+  const num = parseInt(hex.replace("#", ""), 16);
+  let r = (num >> 16) & 0xff;
+  let g = (num >> 8) & 0xff;
+  let b = num & 0xff;
 
-const skills = [
+  r = Math.min(255, Math.floor(r + (255 - r) * (percent / 100)));
+  g = Math.min(255, Math.floor(g + (255 - g) * (percent / 100)));
+  b = Math.min(255, Math.floor(b + (255 - b) * (percent / 100)));
+
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+const rawSkills = [
   // Frontend
   [
-    { name: 'React', icon: <FaReact className="text-sky-400" /> },
-    { name: 'Next.js', icon: <SiNextdotjs className="text-black dark:text-white" /> },
-    { name: 'TypeScript', icon: <SiTypescript className="text-blue-500" /> },
-    { name: 'JavaScript', icon: <FaJs className="text-yellow-400" /> },
-    { name: 'Redux', icon: <SiRedux className="text-purple-500" /> },
-    { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-400" /> },
-    { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" /> },
-    { name: 'CSS3', icon: <FaCss3Alt className="text-blue-600" /> },
-    { name: 'Figma', icon: <SiFigma className="text-pink-500" /> },
+    { name: "React", icon: <FaReact />, color: "#61DAFB" },
+    { name: "Next.js", icon: <SiNextdotjs />, color: "#000000" },
+    { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6" },
+    { name: "Tailwind", icon: <SiTailwindcss />, color: "#38B2AC" },
+    { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26" },
+    { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6" },
+    { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E" },
+    { name: "Redux", icon: <SiRedux />, color: "#764ABC" },
+    { name: "Figma", icon: <SiFigma />, color: "#F24E1E" },
   ],
   // Backend
   [
-    { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
-    { name: 'Express', icon: <SiExpress className="text-gray-700 dark:text-gray-200" /> },
-    { name: 'RESTful API', icon: <FaNetworkWired className="text-blue-700" /> },
-    { name: 'Java', icon: <FaJava className="text-orange-700" /> },
-    { name: 'Spring Boot', icon: <SiSpringboot className="text-green-700" /> },
-    { name: 'Hibernate', icon: <SiHibernate className="text-green-900" /> },
-    { name: 'Maven', icon: <FaTools className="text-orange-500" /> },
+    { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
+    { name: "Express", icon: <SiExpress />, color: "#000000" },
+    { name: "Java", icon: <FaJava />, color: "#007396" },
+    { name: "SpringBoot", icon: <SiSpringboot />, color: "#6DB33F" },
+    { name: "Hibernate", icon: <SiHibernate />, color: "#59666C" },
+    { name: "REST API", icon: <FaNetworkWired />, color: "#61DAFB" },
+    { name: "Maven", icon: <FaTools />, color: "#C71A36" },
   ],
-  // Databases
+  // Data / Cloud / DevOps
   [
-    { name: 'MongoDB', icon: <SiMongodb className="text-green-700" /> },
-    { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-800" /> },
-    { name: 'MySQL', icon: <SiMysql className="text-blue-600" /> },
-    { name: 'SQL Server', icon: <FaDatabase className="text-red-700" /> },
-  ],
-  // DevOps & Cloud
-  [
-    { name: 'Docker', icon: <FaDocker className="text-blue-400" /> },
-    { name: 'AWS', icon: <FaAws className="text-yellow-500" /> },
-    { name: 'Linux', icon: <FaLinux className="text-black dark:text-white" /> },
-    { name: 'Git', icon: <FaGitAlt className="text-orange-600" /> },
+    { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
+    { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
+    { name: "MySQL", icon: <SiMysql />, color: "#4479A1" },
+    { name: "SQL Server", icon: <FaDatabase />, color: "#CC2927" },
+    { name: "Docker", icon: <FaDocker />, color: "#2496ED" },
+    { name: "AWS", icon: <FaAws />, color: "#FF9900" },
+    { name: "Linux", icon: <FaLinux />, color: "#FCC624" },
+    { name: "Git", icon: <FaGitAlt />, color: "#F05032" },
   ],
   // Data Science
   [
-    { name: 'Python', icon: <FaPython className="text-yellow-500" /> },
-    { name: 'Pandas', icon: <SiPandas className="text-black dark:text-white" /> },
-    { name: 'NumPy', icon: <SiNumpy className="text-blue-400" /> },
+    { name: "Python", icon: <FaPython />, color: "#3776AB" },
+    { name: "Pandas", icon: <SiPandas />, color: "#150458" },
+    { name: "NumPy", icon: <SiNumpy />, color: "#013243" },
   ],
 ];
 
-export default function Skills() {
-  const categories = [
-    'Frontend',
-    'Backend',
-    'Databases',
-    'DevOps & Cloud',
-    'Data Science',
-  ];
+// Process skills: replace black with white, and lighten all colors by 20%
+const skills = rawSkills.map((category) =>
+  category.map(({ color, ...rest }) => {
+    let fixedColor = color.toLowerCase() === "#000000" ? "#ffffff" : color;
+    fixedColor = lightenHex(fixedColor, 20);
+    return { ...rest, color: fixedColor };
+  })
+);
+
+export default function SkillsMatrix() {
+  const [hovered, setHovered] = React.useState<string | null>(null);
+
   return (
-    <section id="skills" className="w-full max-w-5xl mx-auto py-20 px-4">
-      <h2 className="text-4xl font-extrabold mb-10 text-center">Skills</h2>
-      <div className="flex flex-col md:flex-row gap-8 justify-center items-start">
-        {skills.map((row, i) => {
-          // Assign a unique gradient or color for each block
-          const blockGradients = [
-            'from-sky-800 via-sky-900 to-zinc-900 dark:from-sky-900 dark:via-sky-950 dark:to-black', // Frontend (techy/dark)
-            'from-green-800 via-green-900 to-zinc-900 dark:from-green-900 dark:via-green-950 dark:to-black', // Backend (techy/dark)
-            'from-purple-800 via-purple-900 to-zinc-900 dark:from-purple-900 dark:via-purple-950 dark:to-black', // Databases (techy/dark)
-            'from-yellow-700 via-yellow-900 to-zinc-900 dark:from-yellow-900 dark:via-yellow-950 dark:to-black', // DevOps & Cloud (techy/dark)
-            'from-pink-800 via-pink-900 to-zinc-900 dark:from-pink-900 dark:via-pink-950 dark:to-black', // Data Science (techy/dark)
-          ];
-          return (
-            <div
-              key={categories[i]}
-              className={`flex flex-col items-center justify-center rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-6 w-full md:w-1/5 aspect-square min-w-[200px] max-w-[260px] mx-auto bg-gradient-to-br ${blockGradients[i]} transition-transform hover:scale-105 hover:shadow-2xl`}
-            >
-              <h3 className="text-xl font-bold mb-4 text-center drop-shadow-lg dark:text-white/90">{categories[i]}</h3>
-              <div className="flex flex-row flex-wrap gap-4 justify-center items-center">
-                {row.map(skill => (
-                  <div key={skill.name} className="flex flex-col items-center min-w-[60px]">
-                    <div className="text-3xl mb-1">{skill.icon}</div>
-                    <span className="font-medium text-base text-center whitespace-nowrap">{skill.name}</span>
+    <section
+      id="skills"
+      className="w-full max-w-6xl mx-auto px-6 py-24 text-white"
+    >
+      <h2 className="text-4xl font-bold mb-12 text-center tracking-wide border-b border-zinc-700 pb-2">
+        Skills & Technologies
+      </h2>
+
+      <div className="space-y-12">
+        {skills.map((category, i) => (
+          <div
+            key={i}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-8 gap-x-6 border-b border-zinc-700 pb-8"
+          >
+            {category.map((skill) => {
+              const isHovered = hovered === skill.name;
+              const color = skill.color;
+
+              return (
+                <div
+                  key={skill.name}
+                  className="flex items-center justify-center cursor-pointer"
+                  onMouseEnter={() => setHovered(skill.name)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  {/* Label container */}
+                  <span
+                    className={`
+                      overflow-hidden
+                      whitespace-nowrap
+                      text-base
+                      font-semibold
+                      transition-all
+                      duration-300
+                      mr-3
+                      ${isHovered ? "w-32 opacity-100" : "w-0 opacity-0"}
+                    `}
+                    aria-hidden="true"
+                    style={{ color }}
+                  >
+                    {skill.name}
+                  </span>
+
+                  {/* Icon */}
+                  <div
+                    className={`
+                      text-4xl
+                      flex
+                      items-center
+                      justify-center
+                      transition-transform
+                      duration-200
+                      ${isHovered ? "scale-125" : ""}
+                    `}
+                    style={{ color, minWidth: 48, minHeight: 48 }}
+                  >
+                    {skill.icon}
                   </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </section>
   );
