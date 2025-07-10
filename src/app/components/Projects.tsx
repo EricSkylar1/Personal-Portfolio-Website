@@ -92,7 +92,7 @@ export default function Projects() {
                 className="absolute inset-0 flex flex-col gap-4 bg-gradient-to-br from-[#0f172a]/90 via-[#1e293b]/90 to-[#0ea5e9]/80 dark:from-[#1e293b]/90 dark:via-[#0f172a]/90 dark:to-[#0ea5e9]/60 rounded-2xl shadow-2xl p-6 border-2 border-cyan-400/40 dark:border-cyan-500/30 w-full h-full items-start justify-start card-front z-10 backdrop-blur-md hover:border-cyan-400 hover:shadow-cyan-500/30 transition-all duration-300"
               >
                 <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                <p className="text-zinc-700 dark:text-zinc-300 mb-2">{project.description}</p>
+                <p className="text-zinc-300 mb-2">{project.description}</p>
                 <div className="flex flex-wrap gap-4">
                   {project.tech.map(tech => {
                     const key = tech.toLowerCase();

@@ -9,7 +9,10 @@ export default function RootLayout({
 }>) {
 	return (
 	   <html lang='en'>
-		   <body className='bg-gray-900 text-white'>
+		<head>
+			<link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+		</head>
+		   <body className='bg-black text-white'>
 				<Navbar />
 				{children}
 				<Footer />
