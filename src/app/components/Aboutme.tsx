@@ -13,7 +13,7 @@ export default function AboutMe() {
   ];
 
   return (
-    <section id="about-me" className="max-w-6xl mx-auto px-6 py-30 grid grid-rows-1 md:grid-rows-2 gap-12 text-white">
+    <section id="about-me" className="w-full max-w-6xl mx-auto px-4 py-16 grid gap-12 text-white grid-cols-1 md:grid-rows-2 md:grid-cols-none">
       {/* Left Panel — Your Life Story */}
       <div className="space-y-6">
         <h2 className="text-3xl font-bold text-red-400">A little about me...</h2>

@@ -55,7 +55,7 @@ const projects = [
     title: "Control+F Lite",
     description: "A browser extension that predicts home listing prices using local market trends, predictive analytics, and interactive heat maps.",
     tech: ["JavaScript", "HTML", "CSS", "React", "Node.js", "Vite"],
-    link: "#",
+    link: "https://github.com/EricSkylar1/ControlFLite",
     image: "control-f-lite.png",
   },
   {
@@ -78,7 +78,7 @@ export default function Projects() {
             tabIndex={0}
             className="group perspective m-0 inline-flex w-fit"
           >
-            <div className="flex h-80 w-[600px] card-3d group m-0">
+            <div className="flex h-100 md:h-80 w-[350px] md:w-[600px] card-3d group m-0">
               {/* Front Side */}
               <a
                 href={project.link}
@@ -96,7 +96,7 @@ export default function Projects() {
 					overflow-hidden
 				"
               >
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-2">{project.title}</h3>
                 <p className="text-zinc-300 mb-2">{project.description}</p>
                 <div className="flex flex-wrap gap-4">
                   {project.tech.map(tech => {
@@ -128,7 +128,7 @@ export default function Projects() {
                 <img
                   src={project.image}
                   alt={project.title + ' preview'}
-                  className="object-cover w-full h-full"
+                  className="object-contain w-full h-full"
                   draggable="false"
                 />
               </a>

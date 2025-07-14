@@ -11,15 +11,15 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full px-4 py-32 flex justify-center text-white"
+      className="w-full max-h-[550px] md:max-h-full md:h-full px-4 md:py-32 flex justify-center text-white"
       aria-label="Contact section"
     >
       <div className="w-full max-w-3xl rounded-3xl p-10 bg-gradient-to-tr from-[#2a0a0a] via-[#1b0b0b] to-[#1c0c0c] shadow-[0_0_40px_rgba(200,50,50,0.6)]">
         {/* Header */}
-        <h2 className="text-4xl font-extrabold mb-4 text-red-500 tracking-wide text-center drop-shadow-sm">
+        <h2 className="text-2xl md:text-4xl font-extrabold mb-4 text-red-500 tracking-wide text-center drop-shadow-sm">
           Contact Me
         </h2>
-        <div className="text-zinc-400 text-lg mb-12 max-w-xl mx-auto text-center">
+        <div className="text-zinc-400 text-md md:text-lg mb-2 md:mb-12 max-w-xl mx-auto text-center">
           <p>
             Interested in collaborating or just want to say hi?
           </p>
@@ -27,7 +27,7 @@ export default function Contact() {
         </div>
 
         {/* Social Icons */}
-        <nav aria-label="Social media links" className="flex gap-8 mb-12 text-3xl justify-center">
+        <nav aria-label="Social media links" className="flex gap-8 mb-2 md:mb-12 text-3xl justify-center">
           {[{
             href: LINKEDIN_PROFILE_URL,
             label: 'LinkedIn profile',
@@ -55,13 +55,13 @@ export default function Contact() {
           action="mailto:ericskylar@gmail.com"
           method="POST"
           encType="text/plain"
-          className="flex flex-col gap-6 max-w-xl mx-auto"
+          className="flex flex-col gap-2 md:gap-6 max-w-xl mx-auto"
         >
           <input
             type="text"
             name="name"
             placeholder="Your Name"
-            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 px-5 py-4 rounded-xl
+            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 py-1 px-5 md:py-4 rounded-xl
               focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-shadow duration-300 shadow-sm shadow-red-900/30"
             required
             aria-label="Your Name"
@@ -70,7 +70,7 @@ export default function Contact() {
             type="email"
             name="email"
             placeholder="Your Email"
-            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 px-5 py-4 rounded-xl
+            className="bg-gradient-to-r from-[#1c1c1c] via-[#2a2a2a] to-[#1c1c1c] border border-red-600 text-white placeholder-red-400 py-1 px-5 md:py-4 rounded-xl
               focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-shadow duration-300 shadow-sm shadow-red-900/30"
             required
             aria-label="Your Email"

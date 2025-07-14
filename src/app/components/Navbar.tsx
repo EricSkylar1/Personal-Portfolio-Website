@@ -19,13 +19,13 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`h-16 fixed top-0 w-full z-50 px-10 flex items-center transition-colors duration-300 ${
+        className={`h-16 fixed md:mt-0 w-full z-50 px-2 md:px-10 flex items-center transition-colors duration-300 ${
           scrolled ? 'bg-black/80 backdrop-blur-md shadow-md' : 'bg-transparent'
         } text-white`}
       >
         <div className="w-full flex items-center">
           <div className="flex items-center font-bold h-full">
-            <a id="quantify" href="/" className="text-3xl">Eric Skylar</a>
+            <a id="quantify" href="/" className="text-3xl ml-3">Eric Skylar</a>
           </div>
           <div className="flex-1 flex items-center justify-center mr-10">
             <ul className="hidden md:flex gap-8 text-lg">
@@ -49,7 +49,7 @@ export default function Navbar() {
           </div>
           <div className="flex items-center gap-4">
             <button
-              className="md:hidden p-2 text-gray-200"
+              className="md:hidden mr-2 p-2 text-gray-200"
               aria-label="Open menu"
               onClick={() => setSidebarOpen(true)}
             >
