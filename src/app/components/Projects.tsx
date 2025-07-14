@@ -56,7 +56,7 @@ const projects = [
     description: "A browser extension that predicts home listing prices using local market trends, predictive analytics, and interactive heat maps.",
     tech: ["JavaScript", "HTML", "CSS", "React", "Node.js", "Vite"],
     link: "#",
-    image: "work-in-progress.png",
+    image: "control-f-lite.png",
   },
   {
     title: "FishDad",
