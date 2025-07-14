@@ -46,15 +46,15 @@ const projects = [
   },
   {
     title: "Keers Cottage Bakery",
-    description: "A modern, responsive site for a local bakery, featuring online ordering, menu management, and a custom admin dashboard.",
+    description: "A smarter, faster way to search web pages. Instantly find every instance of your search term — no more clicking through endless up and down arrows. Just type, and see all matches in one scrollable list. Click any result to jump straight to it on the page. Streamline your browsing with quick, precise text search beyond the default Ctrl+F.",
     tech: ["Wordpress", "WooCommerce"],
     link: "https://keerscottagebakery.com",
     image: "keers-cottage-bakery.png",
   },
   {
-    title: "Home Helper AI",
+    title: "Control+F Lite",
     description: "A browser extension that predicts home listing prices using local market trends, predictive analytics, and interactive heat maps.",
-    tech: ["TypeScript", "Next.js", "Python", "TailwindCSS", "Vite"],
+    tech: ["JavaScript", "HTML", "CSS", "React", "Node.js", "Vite"],
     link: "#",
     image: "work-in-progress.png",
   },
