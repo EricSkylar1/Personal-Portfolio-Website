@@ -18,7 +18,7 @@ export default function Introduction() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl h-215 mx-auto px-8 flex flex-col items-center justify-center text-center">
+    <div className="w-full h-180 md:h-215 mx-auto px-8 flex flex-col items-center justify-center text-center">
 		{/* Avatar */}
 		<div className="w-24 h-24 border-4 border-red-400 rounded-full overflow-hidden mb-6 shadow-[0_0_20px_rgba(220,38,38,0.7)]">
 			<img
@@ -30,16 +30,17 @@ export default function Introduction() {
 
 
 		{/* Greeting */}
-		<h1 className="text-4xl font-extrabold leading-tight mb-2 drop-shadow-sm">
+		<h1 className="text-xl sm:text-4xl font-extrabold leading-snug sm:leading-tight mb-4 text-center sm:text-left drop-shadow-sm">
 			{greeting}, <span className="text-red-400">I'm Eric!</span>
 		</h1>
 
 		{/* Animated Title */}
-		<h2 className="text-2xl font-medium flex items-center justify-center gap-2">
-			<span className=" min-w-[160px]">
+		<h2 className="text-4xl sm:text-2xl font-medium flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2 text-center sm:text-left">
+			<span className="min-w-[160px]">
 				<TextFlip />
 			</span>
 		</h2>
+
     </div>
   );
 }

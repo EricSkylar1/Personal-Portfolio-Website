@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import GitHubCalendar from "react-github-calendar";
 
@@ -14,11 +15,35 @@ interface Repo {
 }
 
 export default function GithubBash() {
+  const [width, setWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 1024
+  );
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Track window width for mobile/desktop detection
   useEffect(() => {
-    fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=8`)
+    if (typeof window === "undefined") return;
+
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    // Initial check
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = width <= 768;
+
+  // Fetch repos
+  useEffect(() => {
+    fetch(
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=8`
+    )
       .then((res) => res.json())
       .then((data) => {
         setRepos(Array.isArray(data) ? data : []);
@@ -26,8 +51,39 @@ export default function GithubBash() {
       });
   }, []);
 
+  // Filter contributions by 3 months if mobile, else no filter
+  const selectContributions = (contributions: any[] = [], isMobile: boolean) => {
+    if (!isMobile) {
+      return contributions;
+    }
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    const shownMonths = 3;
+
+    return contributions.filter((activity) => {
+      if (!activity?.date) return false;
+
+      const date = new Date(activity.date);
+      if (isNaN(date.getTime())) return false;
+
+      const year = date.getFullYear();
+      const month = date.getMonth();
+
+      return (
+        year === currentYear &&
+        month >= currentMonth - shownMonths &&
+        month <= currentMonth
+      );
+    });
+  };
+
   return (
-    <section id="github" className="w-full max-w-6xl mx-auto px-4 py-24 font-mono">
+    <section
+      id="github"
+      className="w-full max-w-6xl mx-auto px-4 py-24 font-mono"
+    >
       <div className="bg-black text-white border border-zinc-700 rounded-md shadow-xl overflow-hidden text-sm leading-relaxed">
         {/* Terminal Top Header */}
         <div className="bg-zinc-900 px-4 py-2 border-b border-zinc-700 flex justify-between items-center text-xs">
@@ -68,6 +124,7 @@ export default function GithubBash() {
                 blockSize={14}
                 blockMargin={4}
                 fontSize={14}
+                transformData={(data) => selectContributions(data, isMobile)}
               />
             </div>
           </div>
@@ -96,9 +153,13 @@ export default function GithubBash() {
                     >
                       {repo.name}
                     </a>{" "}
-                    <span className="text-zinc-400 text-xs">⭐ {repo.stargazers_count}</span>
+                    <span className="text-zinc-400 text-xs">
+                      ⭐ {repo.stargazers_count}
+                    </span>
                     {repo.language && (
-                      <span className="ml-2 text-cyan-300 text-xs">[{repo.language}]</span>
+                      <span className="ml-2 text-cyan-300 text-xs">
+                        [{repo.language}]
+                      </span>
                     )}
                     {repo.description && (
                       <div className="text-zinc-500 text-xs mt-1 pl-2 border-l border-l-zinc-700">
@@ -118,7 +179,7 @@ export default function GithubBash() {
             <span className="text-white">~ </span>
             <span className="text-cyan-300">(main)</span>
             <br />
-			<span>$</span>
+            <span>$</span>
             <span className="text-white animate-pulse"> | </span>
           </div>
         </div>

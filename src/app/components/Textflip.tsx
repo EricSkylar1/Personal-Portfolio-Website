@@ -34,7 +34,7 @@ export default function TextFlip() {
   }, [words]);
 
   return (
-    <div className="flex text-3xl gap-2 font-semibold">
+    <div className="flex text-2xl gap-2 font-semibold">
       <p className="text-white">I am a</p>
       <div ref={tallestRef} className="flex flex-col overflow-hidden text-red-400">
         {words.map((word, index) => (

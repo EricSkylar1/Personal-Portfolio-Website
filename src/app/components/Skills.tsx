@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaReact,
   FaNodeJs,
@@ -100,13 +100,21 @@ const skills = rawSkills.map((category) =>
 
 export default function SkillsMatrix() {
   const [hovered, setHovered] = React.useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+	// Runs only on the client
+	if (typeof window !== "undefined") {
+		setIsMobile(window.innerWidth <= 768);
+	}
+}, []);
 
   return (
     <section
       id="skills"
       className="w-full max-w-6xl mx-auto px-6 py-24 text-white"
     >
-      <h2 className="text-4xl font-bold mb-12 text-center tracking-wide border-b border-zinc-700 pb-2">
+      <h2 className="text-2xl md:text-4xl font-bold mb-12 text-center tracking-wide border-b border-zinc-700 pb-2">
         Skills & Technologies
       </h2>
 
@@ -114,7 +122,7 @@ export default function SkillsMatrix() {
         {skills.map((category, i) => (
           <div
             key={i}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-8 gap-x-6 border-b border-zinc-700 pb-8"
+            className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-y-8 gap-x-6 border-b border-zinc-700 pb-8"
           >
             {category.map((skill) => {
               const isHovered = hovered === skill.name;
@@ -122,28 +130,38 @@ export default function SkillsMatrix() {
 
               return (
                 <div
-                  key={skill.name}
-                  className="flex items-center justify-center cursor-pointer"
-                  onMouseEnter={() => setHovered(skill.name)}
-                  onMouseLeave={() => setHovered(null)}
+					key={skill.name}
+					className="flex items-center justify-center cursor-pointer"
+					onMouseEnter={() => {
+					if (window.matchMedia('(hover: hover)').matches) {
+						setHovered(skill.name);
+					}
+					}}
+					onMouseLeave={() => {
+					if (window.matchMedia('(hover: hover)').matches) {
+						setHovered(null);
+					}
+					}}
                 >
                   {/* Label container */}
                   <span
-                    className={`
-                      overflow-hidden
-                      whitespace-nowrap
-                      text-base
-                      font-semibold
-                      transition-all
-                      duration-300
-                      mr-3
-                      ${isHovered ? "w-32 opacity-100" : "w-0 opacity-0"}
-                    `}
-                    aria-hidden="true"
-                    style={{ color }}
-                  >
-                    {skill.name}
-                  </span>
+						className={`
+							md:overflow-hidden
+							text-sm
+							whitespace-nowrap
+							md:text-base
+							font-semibold
+							transition-all
+							duration-300
+							md:mr-3
+							${isHovered || isMobile ? "w-32 opacity-100" : "w-0 opacity-0"}
+						`}
+						aria-hidden="true"
+						style={{ color }}
+						>
+						{skill.name}
+					</span>
+
 
                   {/* Icon */}
                   <div
