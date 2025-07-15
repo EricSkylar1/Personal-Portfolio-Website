@@ -1,13 +1,34 @@
 'use client';
 
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
-import React from 'react';
+import React, { useState } from 'react';
+import { sendContactForm } from "@/app/utils/utils";
 
 const LINKEDIN_PROFILE_URL = 'https://www.linkedin.com/in/ericskylar/';
 const GITHUB_PROFILE_URL = 'https://github.com/EricSkylar1';
-const EMAIL = 'mailto:ericskylar@gmail.com';
 
 export default function Contact() {
+
+	const [responseMsg, setResponseMsg] = useState("");
+
+  	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const formData = {
+		name: e.currentTarget.name.value,
+		email: e.currentTarget.email.value,
+		message: e.currentTarget.message.value,
+		};
+
+		try {
+		await sendContactForm(formData);  // Your utils function that sends the API request
+		setResponseMsg("Message sent successfully!");
+		e.currentTarget.reset();
+		} catch (error: any) {
+		setResponseMsg((error.message || "Unknown error"));
+		}
+	};
+
   return (
     <section
       id="contact"
@@ -52,9 +73,7 @@ export default function Contact() {
 
         {/* Contact Form */}
         <form
-          action="mailto:ericskylar@gmail.com"
-          method="POST"
-          encType="text/plain"
+          onSubmit={handleSubmit}
           className="flex flex-col gap-2 md:gap-6 max-w-xl mx-auto"
         >
           <input
@@ -92,6 +111,12 @@ export default function Contact() {
           >
             Send Message
           </button>
+
+		  {responseMsg && (
+				<p className="mt-4 text-center text-white bg-orange-600 p-2 rounded">
+					{responseMsg}
+				</p>
+			)}
         </form>
       </div>
     </section>
