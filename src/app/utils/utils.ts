@@ -19,7 +19,7 @@ export async function sendContactForm(formData: {
   message: string;
 }) {
   const response = await fetch(
-    process.env.API_URL + "/prod/contact",
+    `${process.env.NEXT_PUBLIC_API_URL}/prod/contact`,
     {
       method: "POST",
       headers: {
