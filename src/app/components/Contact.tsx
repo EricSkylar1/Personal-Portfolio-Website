@@ -14,18 +14,30 @@ export default function Contact() {
   	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
+		const form = e.currentTarget;
+
+		// Access elements by their 'name' attribute
+		const nameInput = form.elements.namedItem("name") as HTMLInputElement | null;
+		const emailInput = form.elements.namedItem("email") as HTMLInputElement | null;
+		const messageInput = form.elements.namedItem("message") as HTMLTextAreaElement | null;
+
+		if (!nameInput || !emailInput || !messageInput) {
+			setResponseMsg("Form elements not found");
+			return;
+		}
+
 		const formData = {
-		name: e.currentTarget.name.value,
-		email: e.currentTarget.email.value,
-		message: e.currentTarget.message.value,
+			name: nameInput.value,
+			email: emailInput.value,
+			message: messageInput.value,
 		};
 
 		try {
-		await sendContactForm(formData);  // Your utils function that sends the API request
-		setResponseMsg("Message sent successfully!");
-		e.currentTarget.reset();
+			await sendContactForm(formData);
+			setResponseMsg("Message sent successfully!");
+			form.reset();
 		} catch (error: any) {
-		setResponseMsg((error.message || "Unknown error"));
+			setResponseMsg("Failed to send message: " + (error.message || "Unknown error"));
 		}
 	};
 
